@@ -5,6 +5,16 @@ import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 
+// Generate static params for all dish slugs
+export async function generateStaticParams() {
+  return [
+    { slug: "cava-mediterranean-bowl" },
+    { slug: "marry-me-chicken" },
+    { slug: "miso-glazed-salmon" },
+    { slug: "spicy-vodka-rigatoni" },
+  ]
+}
+
 // Mock data - in real app this would come from database
 const dishDetails: Record<string, any> = {
   "cava-mediterranean-bowl": {
