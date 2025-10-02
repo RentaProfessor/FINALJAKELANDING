@@ -9,8 +9,8 @@ const steps = [
   {
     icon: Calendar,
     number: "1",
-    title: "Order by Thursday 8pm",
-    description: "Browse our weekly menu and place your order before the Thursday deadline.",
+    title: "Weekly Menu Updates",
+    description: "Browse our weekly menu featuring fresh, seasonal dishes crafted with premium ingredients.",
   },
   {
     icon: ChefHat,
@@ -21,8 +21,8 @@ const steps = [
   {
     icon: Truck,
     number: "3",
-    title: "Delivered Friday/Saturday",
-    description: "Receive your meals fresh at your door, ready to enjoy or store for the week.",
+    title: "Available Friday/Saturday",
+    description: "Fresh meals ready for pickup or delivery, perfect for your weekend dining.",
   },
 ]
 

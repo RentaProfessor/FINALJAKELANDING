@@ -15,23 +15,23 @@ const dishes = [
     description:
       "Tender grilled chicken over fluffy basmati rice, topped with fresh cucumber-tomato salad, creamy hummus, tangy tzatziki, and a sprinkle of feta. Finished with a drizzle of lemon-herb vinaigrette.",
     price: 16,
-    image: "/mediterranean-chicken-rice-bowl-with-hummus-and-ve.jpg",
+    image: "/CHICKEN BOWL.png",
   },
   {
-    id: "truffle-mac-cheese",
-    name: "Truffle Mac & Cheese",
+    id: "marry-me-chicken",
+    name: "Marry Me Chicken",
     description:
-      "Creamy three-cheese blend with black truffle oil, topped with crispy panko breadcrumbs and fresh herbs. Comfort food elevated to fine dining.",
-    price: 14,
-    image: "/gourmet-truffle-mac-and-cheese.jpg",
+      "Creamy sun-dried tomato and parmesan chicken served over pasta with fresh herbs and a touch of cream. A dish so good, it'll make you want to propose.",
+    price: 17,
+    image: "/Marry Me Chicken.png",
   },
   {
     id: "miso-glazed-salmon",
-    name: "Miso-Glazed Salmon",
+    name: "Miso-Glazed Salmon Bowl",
     description:
       "Pan-seared salmon with sweet miso glaze, served over jasmine rice with sautéed bok choy and sesame seeds. A perfect balance of umami and freshness.",
     price: 18,
-    image: "/miso-glazed-salmon-with-bok-choy.jpg",
+    image: "/Miso Salmon Bowl.png",
   },
 ]
 
@@ -64,11 +64,11 @@ export function FeaturedDishesSection() {
             >
               <Link href={`/menu/${dish.id}`}>
                 <Card className="overflow-hidden hover:shadow-xl transition-shadow cursor-pointer h-full">
-                  <div className="relative h-64 overflow-hidden">
+                  <div className="relative h-80 overflow-hidden bg-muted/20">
                     <img
                       src={dish.image || "/placeholder.svg"}
                       alt={dish.name}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                   <CardContent className="p-6 space-y-3">

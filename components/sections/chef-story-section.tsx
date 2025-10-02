@@ -18,26 +18,26 @@ export function ChefStorySection() {
           className="grid md:grid-cols-2 gap-12 items-center"
         >
           <div className="relative h-[500px] rounded-2xl overflow-hidden">
-            <img src="/chef-in-professional-kitchen.jpg" alt="Chef Jake" className="w-full h-full object-cover" />
+            <img src="/chefpicture.png" alt="Chef Jake" className="w-full h-full object-cover" />
           </div>
 
           <div className="space-y-6">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-balance">Chef's Story</h2>
             <div className="space-y-4 text-lg leading-relaxed text-muted-foreground">
               <p>
-                I grew up surrounded by food and community. My grandmother's kitchen was where I learned that cooking
-                isn't just about feeding people—it's about bringing them together, creating moments, and showing care
-                through every ingredient.
+                All my life, I have had a passion for food.
               </p>
               <p>
-                After training in Michelin-starred kitchens and experiencing the artistry of fine dining, I realized
-                something was missing. The precision, the passion, the quality—why should that be reserved for special
-                occasions?
+                My professional culinary journey began with 'Quarantine Cuisine', a bespoke private dining venture I started in Singapore over COVID-19 in my own home. Throughout this venture, I served over 100 guests, including US embassy personnel, pilots stuck in quarantine hotels and Michelin-starred chefs.
               </p>
               <p>
-                As a student myself, I know the struggle of balancing studies, work, and trying to eat well. That's why
-                I started Chef Jake: to bring restaurant-quality meals to students who deserve better than instant
-                ramen, but don't have time to cook.
+                Prior to college, I worked as a chef in New York, helping 63 Clinton, as one of 5 chefs, earn its first Michelin star, and at 350 Main, a top-rated contemporary American restaurant in Park City, Utah.
+              </p>
+              <p>
+                Most recently, I worked in the local fine-dining restaurant in Lewisburg, Pennsylvania, while attending Bucknell University.
+              </p>
+              <p>
+                These experiences enabled me to refine my skills in the culinary arts, expand my pallet, and create new dishes. Now, at USC, I hope to make a difference once again.
               </p>
             </div>
             <p className="font-serif text-2xl italic">– Jake Bonz</p>

@@ -13,9 +13,6 @@ export function Footer() {
             <Link href="/menu" className="hover:text-primary transition-colors">
               Menu
             </Link>
-            <Link href="/track" className="hover:text-primary transition-colors">
-              Track Order
-            </Link>
             <a
               href="https://instagram.com/chefjake.usc"
               target="_blank"

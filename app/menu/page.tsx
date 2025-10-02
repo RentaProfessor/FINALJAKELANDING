@@ -12,47 +12,31 @@ const menuItems = [
       "Tender grilled chicken over fluffy basmati rice, topped with fresh cucumber-tomato salad, creamy hummus, tangy tzatziki, and a sprinkle of feta.",
     price: 16,
     category: "Bowls",
-    image: "/mediterranean-chicken-rice-bowl.jpg",
+    image: "/CHICKEN BOWL.png",
   },
   {
-    id: "truffle-mac-cheese",
-    name: "Truffle Mac & Cheese",
-    description: "Creamy three-cheese blend with black truffle oil, topped with crispy panko breadcrumbs.",
-    price: 14,
-    category: "Comfort",
-    image: "/truffle-mac-and-cheese.jpg",
+    id: "marry-me-chicken",
+    name: "Marry Me Chicken",
+    description: "Creamy sun-dried tomato and parmesan chicken served over pasta with fresh herbs and a touch of cream.",
+    price: 17,
+    category: "Italian",
+    image: "/Marry Me Chicken.png",
   },
   {
     id: "miso-glazed-salmon",
-    name: "Miso-Glazed Salmon",
-    description: "Pan-seared salmon with sweet miso glaze, served over jasmine rice with sautéed bok choy.",
+    name: "Miso-Glazed Salmon Bowl",
+    description: "Pan-seared salmon with sweet miso glaze, served over jasmine rice with sautéed bok choy and sesame seeds.",
     price: 18,
     category: "Seafood",
-    image: "/miso-glazed-salmon.jpg",
+    image: "/Miso Salmon Bowl.png",
   },
   {
-    id: "korean-beef-bowl",
-    name: "Korean BBQ Beef Bowl",
-    description: "Marinated beef bulgogi over rice with kimchi, pickled vegetables, and gochujang aioli.",
-    price: 17,
-    category: "Bowls",
-    image: "/korean-bbq-beef-bowl.jpg",
-  },
-  {
-    id: "pesto-pasta",
-    name: "Basil Pesto Pasta",
-    description: "Fresh pasta tossed in house-made basil pesto with cherry tomatoes and pine nuts.",
-    price: 13,
-    category: "Pasta",
-    image: "/basil-pesto-pasta.jpg",
-  },
-  {
-    id: "chicken-parmesan",
-    name: "Chicken Parmesan",
-    description: "Breaded chicken breast with marinara and melted mozzarella, served with spaghetti.",
+    id: "spicy-vodka-rigatoni",
+    name: "Spicy Vodka Rigatoni",
+    description: "Perfectly cooked rigatoni in a creamy vodka sauce with a kick of spice, finished with fresh basil and parmesan.",
     price: 15,
-    category: "Italian",
-    image: "/chicken-parmesan.png",
+    category: "Pasta",
+    image: "/Spicy Vodka Rigatoni.png",
   },
 ]
 
@@ -67,26 +51,22 @@ export default function MenuPage() {
             <p className="text-lg text-muted-foreground text-balance">Michelin-quality meals crafted for students</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {menuItems.map((item) => (
               <Link key={item.id} href={`/menu/${item.id}`}>
                 <Card className="overflow-hidden hover:shadow-xl transition-shadow cursor-pointer h-full">
-                  <div className="relative h-64 overflow-hidden">
+                  <div className="relative h-80 overflow-hidden bg-muted/20">
                     <img
                       src={item.image || "/placeholder.svg"}
                       alt={item.name}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
                     />
-                    <div className="absolute top-4 left-4 bg-card px-3 py-1 rounded-full text-sm font-medium">
-                      {item.category}
-                    </div>
                   </div>
                   <CardContent className="p-6 space-y-3">
                     <h3 className="font-serif text-xl font-semibold text-balance">{item.name}</h3>
                     <p className="text-muted-foreground leading-relaxed text-pretty">{item.description}</p>
-                    <div className="flex items-center justify-between pt-2">
+                    <div className="pt-2">
                       <p className="text-2xl font-bold">${item.price}</p>
-                      <Button>Add to Cart</Button>
                     </div>
                   </CardContent>
                 </Card>

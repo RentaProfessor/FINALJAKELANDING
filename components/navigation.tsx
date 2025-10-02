@@ -2,25 +2,42 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Menu, X, ShoppingCart } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { CartDrawer } from "@/components/cart-drawer"
 import { motion, AnimatePresence } from "framer-motion"
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isCartOpen, setIsCartOpen] = useState(false)
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-      setIsMenuOpen(false)
-    }
+    console.log(`Attempting to scroll to section: ${id}`)
+    setIsMenuOpen(false) // Close menu first
+    
+    // Small delay to ensure menu closes before scrolling
+    setTimeout(() => {
+      const element = document.getElementById(id)
+      if (element) {
+        console.log(`Found element for ${id}, scrolling...`)
+        // Get the element's position relative to the document
+        const elementPosition = element.offsetTop
+        const offsetPosition = elementPosition - 80 // Account for fixed header
+        
+        // Use window.scrollTo for more reliable scrolling
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        })
+      } else {
+        console.log(`Element with id "${id}" not found`)
+        // Let's also log all available IDs for debugging
+        const allElements = document.querySelectorAll('[id]')
+        console.log('Available IDs:', Array.from(allElements).map(el => el.id))
+      }
+    }, 100)
   }
 
   const menuItems = [
-    { label: "Home", action: () => window.scrollTo({ top: 0, behavior: "smooth" }) },
+    { label: "Home", action: () => { console.log("Home clicked"); setIsMenuOpen(false); window.location.href = "/"; } },
     { label: "Chef's Story", action: () => scrollToSection("chef-story") },
     { label: "Featured Dishes", action: () => scrollToSection("featured-dishes") },
     { label: "How It Works", action: () => scrollToSection("how-it-works") },
@@ -29,75 +46,48 @@ export function Navigation() {
   ]
 
   return (
-    <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <Link href="/" className="font-serif text-2xl font-semibold text-foreground">
-            Chef Jake
-          </Link>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
+      <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+        <Link href="/" className="font-serif text-2xl font-semibold text-foreground">
+          Chef Jake
+        </Link>
 
-          <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon" onClick={() => setIsCartOpen(true)} className="relative">
-              <ShoppingCart className="h-5 w-5" />
-              <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                2
-              </span>
-            </Button>
-
-            <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
-          </div>
+        <div className="flex items-center gap-2">
+          <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </Button>
         </div>
+      </div>
 
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="border-t border-border bg-card overflow-hidden"
-            >
-              <div className="container mx-auto px-4 py-6 space-y-4">
-                {menuItems.map((item) => (
-                  <button
-                    key={item.label}
-                    onClick={item.action}
-                    className="block w-full text-left text-lg hover:text-primary transition-colors"
-                  >
-                    {item.label}
-                  </button>
-                ))}
-                <Link
-                  href="/menu"
-                  className="block w-full text-left text-lg hover:text-primary transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Menu
-                </Link>
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="border-t border-border bg-card overflow-hidden"
+          >
+            <div className="container mx-auto px-4 py-6 space-y-2">
+              {menuItems.map((item) => (
                 <button
-                  onClick={() => {
-                    setIsCartOpen(true)
-                    setIsMenuOpen(false)
-                  }}
-                  className="block w-full text-left text-lg hover:text-primary transition-colors"
+                  key={item.label}
+                  onClick={item.action}
+                  className="block w-full text-left text-lg px-4 py-3 rounded-lg hover:bg-accent hover:text-accent-foreground transition-all duration-200 font-medium"
                 >
-                  Cart
+                  {item.label}
                 </button>
-                <Link
-                  href="/track"
-                  className="block w-full text-left text-lg hover:text-primary transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Track Order
-                </Link>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </nav>
-
-      <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-    </>
+              ))}
+              <Link
+                href="/menu"
+                className="block w-full text-left text-lg px-4 py-3 rounded-lg hover:bg-accent hover:text-accent-foreground transition-all duration-200 font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Menu
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
   )
 }

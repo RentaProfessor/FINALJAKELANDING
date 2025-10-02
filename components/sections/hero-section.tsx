@@ -34,11 +34,15 @@ export function HeroSection() {
               View Menu
             </Button>
           </Link>
-          <Link href="/menu">
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSc_FiTairNljrbBzqNYy0jVmJE5oZSx9bbHpL8Zj8UWeWGEBg/viewform"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Button size="lg" variant="outline" className="text-lg px-8 bg-transparent">
               Order Now
             </Button>
-          </Link>
+          </a>
         </div>
       </motion.div>
     </section>

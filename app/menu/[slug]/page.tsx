@@ -2,7 +2,7 @@ import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowLeft, Plus, Minus } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 
 // Mock data - in real app this would come from database
@@ -13,7 +13,7 @@ const dishDetails: Record<string, any> = {
       "Tender grilled chicken over fluffy basmati rice, topped with fresh cucumber-tomato salad, creamy hummus, tangy tzatziki, and a sprinkle of feta. Finished with a drizzle of lemon-herb vinaigrette.",
     price: 16,
     category: "Bowls",
-    image: "/mediterranean-chicken-rice-bowl-plated.jpg",
+    image: "/CHICKEN BOWL.png",
     ingredients: [
       "Grilled Chicken",
       "Basmati Rice",
@@ -26,6 +26,66 @@ const dishDetails: Record<string, any> = {
     ],
     allergens: ["Dairy", "Gluten"],
     nutrition: { calories: 620, protein: "42g", carbs: "58g", fat: "22g" },
+  },
+  "marry-me-chicken": {
+    name: "Marry Me Chicken",
+    description:
+      "Creamy sun-dried tomato and parmesan chicken served over pasta with fresh herbs and a touch of cream. A dish so good, it'll make you want to propose.",
+    price: 17,
+    category: "Italian",
+    image: "/Marry Me Chicken.png",
+    ingredients: [
+      "Chicken Breast",
+      "Sun-Dried Tomatoes",
+      "Parmesan Cheese",
+      "Heavy Cream",
+      "Pasta",
+      "Fresh Basil",
+      "Garlic",
+      "Olive Oil",
+    ],
+    allergens: ["Dairy", "Gluten"],
+    nutrition: { calories: 580, protein: "38g", carbs: "45g", fat: "28g" },
+  },
+  "miso-glazed-salmon": {
+    name: "Miso-Glazed Salmon Bowl",
+    description:
+      "Pan-seared salmon with sweet miso glaze, served over jasmine rice with sautéed bok choy and sesame seeds. A perfect balance of umami and freshness.",
+    price: 18,
+    category: "Seafood",
+    image: "/Miso Salmon Bowl.png",
+    ingredients: [
+      "Salmon Fillet",
+      "Miso Paste",
+      "Jasmine Rice",
+      "Bok Choy",
+      "Sesame Seeds",
+      "Soy Sauce",
+      "Ginger",
+      "Green Onions",
+    ],
+    allergens: ["Fish", "Soy"],
+    nutrition: { calories: 520, protein: "45g", carbs: "42g", fat: "18g" },
+  },
+  "spicy-vodka-rigatoni": {
+    name: "Spicy Vodka Rigatoni",
+    description:
+      "Perfectly cooked rigatoni in a creamy vodka sauce with a kick of spice, finished with fresh basil and parmesan.",
+    price: 15,
+    category: "Pasta",
+    image: "/Spicy Vodka Rigatoni.png",
+    ingredients: [
+      "Rigatoni Pasta",
+      "Vodka",
+      "Tomato Sauce",
+      "Heavy Cream",
+      "Red Pepper Flakes",
+      "Parmesan Cheese",
+      "Fresh Basil",
+      "Garlic",
+    ],
+    allergens: ["Dairy", "Gluten"],
+    nutrition: { calories: 650, protein: "22g", carbs: "68g", fat: "28g" },
   },
 }
 
@@ -46,8 +106,8 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
           </Link>
 
           <div className="grid md:grid-cols-2 gap-12">
-            <div className="relative h-[500px] rounded-2xl overflow-hidden">
-              <img src={dish.image || "/placeholder.svg"} alt={dish.name} className="w-full h-full object-cover" />
+            <div className="relative h-[500px] rounded-2xl overflow-hidden bg-muted/20">
+              <img src={dish.image || "/placeholder.svg"} alt={dish.name} className="w-full h-full object-contain" />
             </div>
 
             <div className="space-y-6">
@@ -61,22 +121,6 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
                 <p className="text-4xl font-bold">${dish.price}</p>
               </div>
 
-              <Card>
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex items-center gap-4">
-                    <Button variant="outline" size="icon">
-                      <Minus className="h-4 w-4" />
-                    </Button>
-                    <span className="text-xl font-semibold w-12 text-center">1</span>
-                    <Button variant="outline" size="icon">
-                      <Plus className="h-4 w-4" />
-                    </Button>
-                  </div>
-                  <Button size="lg" className="w-full">
-                    Add to Cart
-                  </Button>
-                </CardContent>
-              </Card>
 
               <div className="space-y-4 pt-4">
                 <div>
